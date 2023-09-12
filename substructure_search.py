@@ -63,14 +63,14 @@ if __name__ == "__main__":
             organocat = organocats_list[i]
             false_organocats.append(organocat)
 
-    # with open('false_organocats.txt', 'w') as f:
-    #  for organocat in false_organocats:
-    #      f.write(organocat)
-    #    f.write('\n')
+    with open('false_organocats.txt', 'w') as f:
+        for organocat in false_organocats:
+            f.write(organocat)
+            f.write('\n')
 
-    # results = {"organocats":organocats_list, "match substructures?":organocats_bools}
-    # results_df = pd.DataFrame(results)
-    # results_df.to_csv('data/organocats_substructure_match.csv')
+    results = {"organocats":organocats_list, "match substructures?":organocats_bools}
+    results_df = pd.DataFrame(results)
+    results_df.to_csv('data/organocats_substructure_match.csv')
 
     drugs_mols = [Chem.MolFromSmiles(x, sanitize=True) for x in drugs_list]
     drugs_bools = [substruct_search(drug, substruct_mols) for drug in drugs_mols]
